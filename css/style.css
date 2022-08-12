@@ -38,6 +38,24 @@ select:hover, button:hover
     background-color: #33ee22;
 }
 
+#draw
+{
+    /* display: inline-block; */
+    display: none;
+    position: fixed;
+    color: #b9b7ce;
+    font-size: 5vh;
+    text-shadow: 0 0 3vh #ffffff;
+    font-weight: 700;
+    left: 26.5vw;
+    top:  11vh;
+    width: 46vw;
+    height: 64vh;
+    background-color: #181920;
+    box-shadow: inset 0 0 15vw #23274a, inset 0 0 15vw #23274a;
+    z-index: 1;
+}
+
 .square
 {
     display: inline-block;
@@ -45,13 +63,14 @@ select:hover, button:hover
     align-items: center;
     vertical-align: middle;
     text-align: center;
-    color: #cccccc;
+    color: #b9b7ce;
     font-size: 20vh;
-    /*background-color: #77777755;*/
+    /*background-color: #77777755;*/ /* uncomment to reposition */
     font-weight: 1000;
     width: 8vw;
     height: 15vh;
-    text-shadow: 0 0 3vh #ffffff;
+    text-shadow: 0 0 3vh #ffffffcc, 0 0 8vh #b9b7ce66;
+    cursor: pointer;
 }
 
 .fa

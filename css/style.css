@@ -82,7 +82,7 @@ select:hover, button:hover
 .square .fa-times
 {
     font-weight: 400;
-    /*font-size: 24vh;*/
+    /*font-size: 24vh;*/ /* maybe replace font awesome icons with SVG */
 }
 
 #sq_0

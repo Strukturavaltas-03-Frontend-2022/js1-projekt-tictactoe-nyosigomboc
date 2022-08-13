@@ -65,8 +65,23 @@ let state = getCleanState()
 const markToHTML =
 {
     '0': '',
-    '-1': '<i class="fa fa-circle-o" aria-hidden="true"></i>',
-    '1': '<i class="fa fa-times" aria-hidden="true"></i>'
+//    '-1': '<i class="fa fa-circle-o" aria-hidden="true"></i>',
+//    '1': '<i class="fa fa-times" aria-hidden="true"></i>'
+    '1':
+        `
+        <svg width="100" height="100">
+        <defs><filter id="gblur"><feGaussianBlur in="SourceGraphic" stdDeviation="1.3" /></filter></defs>
+        <line x1="10%" y1="10%" x2="90%" y2="90%" style="stroke:#b9b7ce;stroke-width:15%" filter="url(#gblur)"/>
+        <line x1="10%" y1="90%" x2="90%" y2="10%" style="stroke:#b9b7ce;stroke-width:15%" filter="url(#gblur)"/>
+        </svg>
+        `,
+    '-1':
+        `
+        <svg width="100" height="100">
+        <defs><filter id="gblur"><feGaussianBlur in="SourceGraphic" stdDeviation="1.3" /></filter></defs>
+        <ellipse cx="50%" cy="50%" rx="35%" ry="35%" stroke="#b9b7ce" stroke-width="15%" fill="transparent" filter="url(#gblur)" />
+        </svg>
+        `
 }
 
 const winnerName =
@@ -78,7 +93,7 @@ const winnerName =
 
 const squares = Array.from(document.querySelectorAll('.square')) // collect all the squares
 const messageSpan = document.querySelector('.message')
-const drawDiv = document.getElementById('draw')
+const drawDiv = document.querySelector('#draw')
 
 const rowColumnToSquare = (row, column) => LINES * row + column // just a function to convert
 
@@ -170,8 +185,8 @@ const miniMax = (state) =>
         if(anyoneWon === 0)
             return [DRAW_VALUE, null]
         if(state.next === anyoneWon)
-            return [WINNING_VALUE, null]
-        return [LOSING_VALUE, null] // this should be unnecessary
+            return [WINNING_VALUE - state.numberOfMoves, null]
+        return [LOSING_VALUE + state.numberOfMoves, null] // this should be unnecessary
     }
 
     // "opening book", just to be less boring
@@ -183,7 +198,7 @@ const miniMax = (state) =>
     }
 
     let bestValue = LOSING_VALUE
-    let bestMove
+    let bestMove = null
 
     for(let i = 0; i < BOARD_SIZE; i++)
     {
@@ -193,8 +208,10 @@ const miniMax = (state) =>
         step(newState, i) // try this move
         let result = miniMax(newState) // evaluate this new state
         let value = -result[0]
-        if(value === WINNING_VALUE)
-            return [value, i] // if Joshua can win, do that.. even if there are even better moves
+
+        //if(value === WINNING_VALUE)
+            //return [value, i] // if Joshua can win, do that.. even if there are even better moves
+
         if((value > bestValue) || ((value >= bestValue) && (Math.random()<0.2)))
         {
             bestValue = value

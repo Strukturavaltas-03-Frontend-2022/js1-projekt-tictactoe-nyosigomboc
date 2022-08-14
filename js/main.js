@@ -33,8 +33,10 @@ Nyos
 // a list of URLs to redirect the user when ZERO players got selected
 const URLs = 
 [
-    'https://www.youtube.com/watch_popup?v=F7qOV8xonfY', // 10th clip, tic-tac-toe
-    'https://www.youtube.com/watch_popup?v=MpmGXeAtWUw'  // 11th clip, finale, the only winning move
+    'https://www.youtube.com/watch_popup?v=KXzNo0vR_dU', // 3rd clip, Shall We Play a Game?
+    'https://www.youtube.com/watch_popup?v=1vmnp7ghGPk', // 5th clip, Futility
+    'https://www.youtube.com/watch_popup?v=F7qOV8xonfY', // 10th clip, Tic-tac-toe
+    'https://www.youtube.com/watch_popup?v=MpmGXeAtWUw'  // 11th clip, The only winning move
 ]
 
 // random redirection
@@ -261,7 +263,8 @@ const stepAndCheck = (state, index) =>
     if(anyoneWon!==null) // if yes
     {
         active = false // game over, disable the board
-        setMessage('WINNER: ' + winnerName[anyoneWon]) // show the winner/loser/draw
+        setMessage('WINNER: ' + winnerName[anyoneWon] + ((numberOfPlayers === 1) ?
+          ", WOULDN'T YOU PREFER A GOOD GAME OF CHESS?" : '')) // show the winner/loser/draw
         if(anyoneWon === 0)
             setTimeout(()=>setDrawVisible(true), 500) // after a while show the movie quote
             // let the player check the board first

@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <!--<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">-->
     <title>WOPR Console</title>
 </head>
 <body>
@@ -13,10 +12,10 @@
         # OF PLAYERS:
         <select name="number_of_players">
             <option value="2">TWO</option>
-            <option value="1">ONE</option>
-            <option value="0">ZERO</option>
+            <option value="1" selected="1">ONE</option>
+            <option value="0">ZERO :)</option>
         </select>
-        <button class="header__start" onclick="startGame()">START</button>
+        <button onclick="startGame()">START</button>
         <span class="message">SHALL WE PLAY A GAME?</span>
     </header>
     <span class="square" id="sq_0"></span>

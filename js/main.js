@@ -175,7 +175,7 @@ const whoWon = state =>
         return possible
 
     // noone won so far, check if there are empty squares left
-    if(state.numberOfMoves === BOARD_SIZE)
+    if(state.numberOfMoves >= BOARD_SIZE)
         return 0 // stalemate
 
     return null // no winner so far, the match can go on
